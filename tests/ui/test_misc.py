@@ -22,7 +22,6 @@ def test_contact_us(base_page, contact_page, page):
     with allure.step("Проверить, что открылась домашняя страница"):
         expect(page).to_have_url("https://automationexercise.com/")
 
-
 @allure.story('Miscellaneous tests')
 @allure.title("Verify Test Cases Page")
 def test_verify_tests_page(base_page, page):
@@ -32,3 +31,13 @@ def test_verify_tests_page(base_page, page):
         base_page.tests_link.click()
     with allure.step("Проверить, что отобразилась страница с тестами"):
         expect(page).to_have_url("https://automationexercise.com/test_cases")
+
+@allure.story('Miscellaneous tests')
+@allure.title("Verify Subscription in home page")
+def test_subscription(base_page, page):
+    with allure.step("Открыть домашнюю страницу"):
+        base_page.navigate("https://automationexercise.com/")
+    with allure.step("Проверить, что отображается текст 'SUBSCRIPTION' "):
+        expect(base_page.subscription_text).to_be_visible()
+    with allure.step("Заполнить форму и подписаться"):
+        base_page.subscribe('test_email@gmail.com')

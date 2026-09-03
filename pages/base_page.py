@@ -20,6 +20,7 @@ class BasePage:
         self.sub_input = page.get_by_placeholder("Your email address")
         self.sub_button = page.locator("#subscribe")
         self.scroll_button = page.locator("#scrollUp")
+        self.subscription_text = page.locator("h2:text('Subscription')")
 
     def navigate(self, url: str):
         self.page.goto(url, timeout=60000)
@@ -27,7 +28,7 @@ class BasePage:
     def open_cart(self):
         self.cart_link.click()
 
-    def subscription(self, email: str):
+    def subscribe(self, email: str):
         self.sub_input.fill(email)
         self.sub_button.click()
 
